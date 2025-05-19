@@ -5,6 +5,8 @@ import (
 
 	v1 "github.com/orzkratos/demokratos/demo2kratos/api/helloworld/v1"
 	"github.com/orzkratos/demokratos/demo2kratos/internal/biz"
+	"github.com/orzkratos/demokratos/demo2kratos/internal/pkg/middleware/localize"
+	"github.com/orzkratos/demokratos/demo2kratos/internal/pkg/middleware/localize/i18nmsg"
 )
 
 // GreeterService is a greeter service.
@@ -25,5 +27,10 @@ func (s *GreeterService) SayHello(ctx context.Context, in *v1.HelloRequest) (*v1
 	if err != nil {
 		return nil, err
 	}
-	return &v1.HelloReply{Message: "Hello " + g.Hello}, nil
+
+	message := localize.FromContext(ctx).MustLocalize(i18nmsg.I18nGreeting(&i18nmsg.GreetingParam{
+		Name: g.Hello,
+	}))
+
+	return &v1.HelloReply{Message: message}, nil
 }

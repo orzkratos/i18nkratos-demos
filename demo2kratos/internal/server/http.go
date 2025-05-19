@@ -6,6 +6,7 @@ import (
 	"github.com/go-kratos/kratos/v2/transport/http"
 	v1 "github.com/orzkratos/demokratos/demo2kratos/api/helloworld/v1"
 	"github.com/orzkratos/demokratos/demo2kratos/internal/conf"
+	"github.com/orzkratos/demokratos/demo2kratos/internal/pkg/middleware/localize"
 	"github.com/orzkratos/demokratos/demo2kratos/internal/service"
 )
 
@@ -14,6 +15,7 @@ func NewHTTPServer(c *conf.Server, greeter *service.GreeterService, logger log.L
 	var opts = []http.ServerOption{
 		http.Middleware(
 			recovery.Recovery(),
+			localize.I18N(),
 		),
 	}
 	if c.Http.Network != "" {
