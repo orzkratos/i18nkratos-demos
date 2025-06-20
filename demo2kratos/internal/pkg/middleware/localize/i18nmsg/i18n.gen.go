@@ -16,14 +16,12 @@ func (p *ErrormsgParam) GetTemplateValues() map[string]any {
 	return res
 }
 
-func NewErrormsg(data *ErrormsgParam) (string, map[string]any) {
-	return "errormsg", data.GetTemplateValues()
-}
-
 func I18nErrormsg(data *ErrormsgParam) *i18n.LocalizeConfig {
+	const messageID = "errormsg"
+	var valuesMap = data.GetTemplateValues()
 	return &i18n.LocalizeConfig{
-		MessageID:    "errormsg",
-		TemplateData: data.GetTemplateValues(),
+		MessageID:    messageID,
+		TemplateData: valuesMap,
 	}
 }
 
@@ -39,14 +37,12 @@ func (p *GreetingParam) GetTemplateValues() map[string]any {
 	return res
 }
 
-func NewGreeting(data *GreetingParam) (string, map[string]any) {
-	return "greeting", data.GetTemplateValues()
-}
-
 func I18nGreeting(data *GreetingParam) *i18n.LocalizeConfig {
+	const messageID = "greeting"
+	var valuesMap = data.GetTemplateValues()
 	return &i18n.LocalizeConfig{
-		MessageID:    "greeting",
-		TemplateData: data.GetTemplateValues(),
+		MessageID:    messageID,
+		TemplateData: valuesMap,
 	}
 }
 
@@ -62,13 +58,11 @@ func (p *WelcomeParam) GetTemplateValues() map[string]any {
 	return res
 }
 
-func NewWelcome(data *WelcomeParam) (string, map[string]any) {
-	return "welcome", data.GetTemplateValues()
-}
-
 func I18nWelcome(data *WelcomeParam) *i18n.LocalizeConfig {
+	const messageID = "welcome"
+	var valuesMap = data.GetTemplateValues()
 	return &i18n.LocalizeConfig{
-		MessageID:    "welcome",
-		TemplateData: data.GetTemplateValues(),
+		MessageID:    messageID,
+		TemplateData: valuesMap,
 	}
 }
