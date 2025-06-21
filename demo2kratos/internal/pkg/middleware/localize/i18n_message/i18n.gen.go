@@ -1,14 +1,14 @@
-package i18nmsg
+package i18n_message
 
 import (
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 )
 
-type ErrormsgParam struct {
+type ErrorMsgParam struct {
 	ErrorMessage any
 }
 
-func (p *ErrormsgParam) GetTemplateValues() map[string]any {
+func (p *ErrorMsgParam) GetTemplateValues() map[string]any {
 	res := make(map[string]any)
 	if p.ErrorMessage != nil {
 		res["ErrorMessage"] = p.ErrorMessage
@@ -16,8 +16,8 @@ func (p *ErrormsgParam) GetTemplateValues() map[string]any {
 	return res
 }
 
-func I18nErrormsg(data *ErrormsgParam) *i18n.LocalizeConfig {
-	const messageID = "errormsg"
+func I18nErrorMsg(data *ErrorMsgParam) *i18n.LocalizeConfig {
+	const messageID = "errorMsg"
 	var valuesMap = data.GetTemplateValues()
 	return &i18n.LocalizeConfig{
 		MessageID:    messageID,

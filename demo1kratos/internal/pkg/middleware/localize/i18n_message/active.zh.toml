@@ -6,6 +6,6 @@ other = "你好，{{.Name}}"
 description = "A welcome message for users accessing the service"
 other = "欢迎使用我们的服务，{{.User}}！"
 
-[errormsg]
+[errorMsg]
 description = "A generic error message for failed operations"
 other = "操作失败：{{.ErrorMessage}}"

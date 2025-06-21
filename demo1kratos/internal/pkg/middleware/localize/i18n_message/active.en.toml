@@ -6,6 +6,6 @@ other = "Hello, {{.Name}}"
 description = "A welcome message for users accessing the service"
 other = "Welcome to our service, {{.User}}!"
 
-[errormsg]
+[errorMsg]
 description = "A generic error message for failed operations"
 other = "Operation failed: {{.ErrorMessage}}"

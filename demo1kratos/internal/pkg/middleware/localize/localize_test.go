@@ -6,7 +6,7 @@ import (
 
 	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/orzkratos/demokratos/demo1kratos/internal/pkg/middleware/localize"
-	"github.com/orzkratos/demokratos/demo1kratos/internal/pkg/middleware/localize/i18nmsg"
+	"github.com/orzkratos/demokratos/demo1kratos/internal/pkg/middleware/localize/i18n_message"
 	"github.com/stretchr/testify/require"
 	"github.com/yyle88/neatjson/neatjsons"
 	"google.golang.org/protobuf/types/known/emptypb"
@@ -16,7 +16,7 @@ import (
 // 其实也没必要对 middleware 进行单元测试的，这里只是自己尝试写写，掌握点新技能
 func TestI18N(t *testing.T) {
 	var rawFunc middleware.Handler = func(ctx context.Context, req any) (any, error) {
-		msg := localize.FromContext(ctx).MustLocalize(i18nmsg.I18nWelcome(&i18nmsg.WelcomeParam{
+		msg := localize.FromContext(ctx).MustLocalize(i18n_message.I18nWelcome(&i18n_message.WelcomeParam{
 			User: "abc",
 		}))
 		return wrapperspb.String(msg), nil

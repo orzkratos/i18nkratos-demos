@@ -1,4 +1,4 @@
-package i18nmsg
+package i18n_message
 
 import (
 	"embed"
