@@ -5,6 +5,7 @@ import (
 
 	"github.com/BurntSushi/toml"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
+	"github.com/yyle88/must"
 	"github.com/yyle88/neatjson/neatjsons"
 	"github.com/yyle88/rese"
 	"github.com/yyle88/zaplog"
@@ -31,6 +32,8 @@ func LoadI18nFiles(debugModeOpen bool) (*i18n.Bundle, []*i18n.MessageFile) {
 		}
 		messageFiles = append(messageFiles, messageFile)
 	}
+	must.Have(messageFiles)
+	must.Have(bundle.LanguageTags())
 
 	if debugModeOpen {
 		zaplog.SUG.Debugln(neatjsons.S(bundle.LanguageTags()))

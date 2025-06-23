@@ -21,8 +21,8 @@ func I18N() middleware.Middleware {
 		return func(ctx context.Context, req interface{}) (reply interface{}, err error) {
 			var acceptLanguage string
 			// parse accept-language from transport context
-			if tr, ok := transport.FromServerContext(ctx); ok {
-				acceptLanguage = tr.RequestHeader().Get("accept-language") //这里有可能得到个空字符串
+			if tsp, ok := transport.FromServerContext(ctx); ok {
+				acceptLanguage = tsp.RequestHeader().Get("accept-language") //这里有可能得到个空字符串
 			}
 			// when accept == "" set accept = defaultValue
 			acceptLanguage = zerotern.VV(acceptLanguage, i18n_message.DefaultLanguage.String()) //在这里设置默认语言
